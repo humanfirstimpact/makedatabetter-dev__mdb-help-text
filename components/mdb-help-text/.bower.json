@@ -1,0 +1,28 @@
+{
+  "name": "mdb-help-text",
+  "description": "Help text element",
+  "main": "mdb-help-text.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^1.1.4",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.13",
+    "iron-icons": "PolymerElements/iron-icons#^1.2.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "homepage": "https://github.com/makedatabetter-dev/mdb-help-text",
+  "_release": "d65b790a73",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d65b790a73ad495deed7e0a25b510a112e137345"
+  },
+  "_source": "https://github.com/makedatabetter-dev/mdb-help-text.git",
+  "_target": "master",
+  "_originalSource": "makedatabetter-dev/mdb-help-text",
+  "_direct": true
+}
