@@ -11,8 +11,6 @@ The following custom properties and mixins are also available for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--mdb-help-text-background` | Background color of the tooltip | `#fff`
-`--mdb-help-text-color` | Color of help text | `#aaa`
 `--mdb-help-text-font-size` | Font size of help text | `1em`
 
 @demo demo/index.html 
@@ -34,8 +32,7 @@ Custom property | Description | Default
       }
 
        :host paper-tooltip {
-        --paper-tooltip-background: var(--mdb-help-text-background, #fff);
-        --paper-tooltip-text-color: var(--mdb-help-text-color, #aaa);
+        --paper-tooltip-background: var(--mdb-accent-color-background, #fff);
         --paper-tooltip-opacity: 1;
         --paper-tooltip: {
           box-shadow: 0 0 15px #bfbfbf;
@@ -48,6 +45,7 @@ Custom property | Description | Default
           background: #fff;
           border: 1px solid #bfbfbf;
           font-weight: 400;
+          color: var(--mdb-disabled-text-dark, #000);
         }
       }
 
