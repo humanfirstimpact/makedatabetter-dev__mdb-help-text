@@ -20,21 +20,21 @@ Custom property | Description | Default
 <dom-module id="mdb-help-text">
   <template>
     <style>
-       :host {
+      :host {
         display: inline;
         position: relative;
         @apply(--paper-font-common-base);
       }
 
-       :host #help {
+      :host #help {
         color: var(--icon-color, #aaa);
         --iron-icon-height: 18px;
         --iron-icon-width: 18px;
-        padding-bottom:6px;
+        padding-bottom: 6px;
         @apply(--mdb-help-icon);
       }
 
-       :host paper-tooltip {
+      :host paper-tooltip {
         --paper-tooltip-background: var(--mdb-accent-color-background, #fff);
         --paper-tooltip-opacity: 1;
         --paper-tooltip: {
@@ -48,106 +48,13 @@ Custom property | Description | Default
           border: 1px solid #bfbfbf;
           font-weight: 400;
           color: var(--mdb-disabled-text-dark, #000);
+          width: 300px;
         }
-      }
-
-       :host #help+paper-tooltip .arrow:before,
-       :host #help+paper-tooltip .arrow:after {
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-      }
-      /*When tooltip is on right*/
-
-       :host[position="right"] #help+paper-tooltip .arrow:before,
-       :host[position="right"] #help+paper-tooltip .arrow:after {
-        right: 100%;
-        top: 50%;
-      }
-
-       :host[position="right"] #help+paper-tooltip .arrow:before {
-        border-color: rgba(170, 170, 170, 0);
-        border-right-color: #aaa;
-        border-width: 11px;
-        margin-top: -11px;
-      }
-
-       :host[position="right"] #help+paper-tooltip .arrow:after {
-        border-color: rgba(255, 255, 255, 0);
-        border-right-color: #fff;
-        border-width: 10px;
-        margin-top: -10px;
-      }
-      /*When tooltip is on left*/
-
-       :host[position="left"] #help+paper-tooltip .arrow:before,
-       :host[position="left"] #help+paper-tooltip .arrow:after {
-        left: 100%;
-        top: 50%;
-      }
-
-       :host[position="left"] #help+paper-tooltip .arrow:after {
-        border-color: rgba(255, 255, 255, 0);
-        border-left-color: #fff;
-        border-width: 10px;
-        margin-top: -10px;
-      }
-
-       :host[position="left"] #help+paper-tooltip .arrow:before {
-        border-color: rgba(170, 170, 170, 0);
-        border-left-color: #aaa;
-        border-width: 11px;
-        margin-top: -11px;
-      }
-      /*When tooltip is above*/
-
-       :host[position="top"] #help+paper-tooltip .arrow:before,
-       :host[position="top"] #help+paper-tooltip .arrow:after {
-        top: 100%;
-        left: 50%;
-      }
-
-       :host[position="top"] #help+paper-tooltip .arrow:after {
-        border-color: rgba(255, 255, 255, 0);
-        border-top-color: #fff;
-        border-width: 10px;
-        margin-left: -10px;
-      }
-
-       :host[position="top"] #help+paper-tooltip .arrow:before {
-        border-color: rgba(170, 170, 170, 0);
-        border-top-color: #aaa;
-        border-width: 11px;
-        margin-left: -11px;
-      }
-      /*When tooltip is below*/
-
-       :host[position="bottom"] #help+paper-tooltip .arrow:before,
-       :host[position="bottom"] #help+paper-tooltip .arrow:after {
-        bottom: 100%;
-        left: 50%;
-      }
-
-       :host[position="bottom"] #help+paper-tooltip .arrow:after {
-        border-color: rgba(255, 255, 255, 0);
-        border-bottom-color: #fff;
-        border-width: 10px;
-        margin-left: -10px;
-      }
-
-       :host[position="bottom"] #help+paper-tooltip .arrow:before {
-        border-color: rgba(170, 170, 170, 0);
-        border-bottom-color: #aaa;
-        border-width: 11px;
-        margin-left: -11px;
       }
     </style>
 
     <iron-icon id="help" icon="[[icon]]"></iron-icon>
-    <paper-tooltip for="help" position="{{position}}">
+    <paper-tooltip animation-delay="[[animationDelay]]" for="help" position="{{position}}">
       <div class="arrow">
         [[helpText]]
       </div>
@@ -174,7 +81,10 @@ Custom property | Description | Default
           value: 'right',
           reflectToAttribute: true
         },
-
+        animationDelay: {
+          type: Number,
+          value: 0
+        },
         icon: {
           type: String,
           value: 'icons:help-outline'
