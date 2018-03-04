@@ -52,8 +52,8 @@ Custom property | Description | Default
       }
     </style>
 
-    <iron-icon id="help" icon="[[icon]]"></iron-icon>
-    <paper-tooltip animation-delay="[[animationDelay]]" for="help" position="{{position}}">
+    <iron-icon id="help" icon="[[icon]]" on-mouseenter="onHovered"></iron-icon>
+    <paper-tooltip id="tooltipElem" animation-delay="[[animationDelay]]" for="help" position="[[position]]">
       <div class="arrow">
         [[helpText]]
       </div>
@@ -62,23 +62,20 @@ Custom property | Description | Default
 
   <script>
     Polymer({
-
       is: 'mdb-help-text',
-
       properties: {
         name: {
           type: String,
           value: 'mdb-help-text',
         },
-
         helpText: {
           type: String
         },
-
         position: {
           type: String,
           value: 'right',
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notifyPath: true
         },
         animationDelay: {
           type: Number,
@@ -89,7 +86,37 @@ Custom property | Description | Default
           value: 'icons:help-outline'
         }
       },
+      onHovered: function(e){ //fit-to-bounds property works for very basic scenarios
+        var tooltipElem = this.$.tooltipElem;
+        var that = this;
+        
+        var callback = function(){
+          if (that.isOutOfBounds(tooltipElem)){
+            var currPos = that.position;
 
+            switch (currPos) {
+              case 'right':
+                that.position = 'left';
+                tooltipElem.updatePosition();
+                break;
+              case 'left':
+                that.position = 'right';
+                tooltipElem.updatePosition();
+                break;
+            }
+          }
+        };
+        setTimeout(callback, this.animationDelay + 1);
+      },
+      isOutOfBounds: function(el) {
+        var rect = el.getBoundingClientRect();
+
+        return (
+                (rect.x + rect.width) < 0 
+                  || (rect.y + rect.height) < 0
+                  || ((rect.x + rect.width) > window.innerWidth || (rect.y + rect.height) > window.innerHeight)
+              );
+      }
     });
   </script>
 </dom-module>
