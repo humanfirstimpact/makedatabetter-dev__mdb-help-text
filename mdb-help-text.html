@@ -84,9 +84,16 @@ Custom property | Description | Default
         icon: {
           type: String,
           value: 'icons:help-outline'
+        },
+        skipBoundsCheck: {
+          type: Boolean,
+          value: false
         }
       },
       onHovered: function(e){
+        if(this.skipBoundsCheck)
+          return;
+
         var tooltipElem = this.$.tooltipElem;
         var that = this;
         
